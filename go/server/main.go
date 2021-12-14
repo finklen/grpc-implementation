@@ -7,7 +7,16 @@ import (
 	"net"
 
 	pb "github.com/finklen/grpc-implementation/go/helloworld/helloworld"
+	"google.golang.org/grpc"
 )
+
+type server struct {
+	pb.UnimplementedGreeterSever
+}
+
+func (s *server) SayHello(ctx content.Context, in ) {
+
+}
 
 var (
 	port = flag.Int("port", 50051, "Server port")
@@ -21,7 +30,7 @@ func main() {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 
-	// _ := grpc.NewServer()
+	s := grpc.NewServer()
 
-	pb.RegisterGreeterServer()
+	pb.RegisterGreeterServer(s, &server{})
 }

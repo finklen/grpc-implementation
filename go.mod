@@ -1,4 +1,4 @@
-module github.com/finklen/grpc-implementation/go
+module github.com/finklen/grpc-implementation
 
 go 1.17
 
